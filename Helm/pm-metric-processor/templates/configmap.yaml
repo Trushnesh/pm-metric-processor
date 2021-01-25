@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "pm-metric-processor.name" . }}
+  labels:
+{{- include "pm-metric-processor.labels" . | indent 4 }}
+data:
+  application.properties: |
+    kafka.bootstrapAddress={{.Values.kafka.bootstrapAddress}}
